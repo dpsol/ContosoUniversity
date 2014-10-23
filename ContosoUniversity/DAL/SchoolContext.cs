@@ -7,8 +7,8 @@ namespace ContosoUniversity.DAL
     public class SchoolContext : DbContext
     {
 
-        public SchoolContext(string stringConnection)
-            : base(stringConnection) // Se pasa el nombre de la cadena de conexión, pero también puede pasarse la cadena de conexión directamente
+        public SchoolContext()
+            : base("SchoolContext") // Se pasa el nombre de la cadena de conexión, pero también puede pasarse la cadena de conexión directamente
         {
         }
 
