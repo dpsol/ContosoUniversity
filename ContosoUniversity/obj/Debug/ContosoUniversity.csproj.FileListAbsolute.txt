@@ -72,3 +72,7 @@ E:\usr\Daniel\Source\Repos\ContosoUniversitySolution\ContosoUniversity\bin\es\Mi
 E:\usr\Daniel\Source\Repos\ContosoUniversitySolution\ContosoUniversity\obj\Debug\ContosoUniversity.csprojResolveAssemblyReference.cache
 E:\usr\Daniel\Source\Repos\ContosoUniversitySolution\ContosoUniversity\obj\Debug\ContosoUniversity.dll
 E:\usr\Daniel\Source\Repos\ContosoUniversitySolution\ContosoUniversity\obj\Debug\ContosoUniversity.pdb
+E:\usr\Daniel\Source\Repos\ContosoUniversitySolution\ContosoUniversity\bin\PagedList.dll
+E:\usr\Daniel\Source\Repos\ContosoUniversitySolution\ContosoUniversity\bin\PagedList.Mvc.dll
+E:\usr\Daniel\Source\Repos\ContosoUniversitySolution\ContosoUniversity\bin\PagedList.xml
+E:\usr\Daniel\Source\Repos\ContosoUniversitySolution\ContosoUniversity\bin\PagedList.Mvc.xml
