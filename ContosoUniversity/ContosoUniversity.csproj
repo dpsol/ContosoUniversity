@@ -168,16 +168,41 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="DAL\SchoolConfiguration.cs" />
     <Compile Include="DAL\SchoolContext.cs" />
     <Compile Include="DAL\SchoolInitializer.cs" />
+    <Compile Include="DAL\SchoolInterceptorLogging.cs" />
+    <Compile Include="DAL\SchoolInterceptorTransientErrors.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Migrations\201410292221001_InitialCreate.cs" />
+    <Compile Include="Migrations\201410292221001_InitialCreate.Designer.cs">
+      <DependentUpon>201410292221001_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411042313247_MaxLengthOnNames.cs" />
+    <Compile Include="Migrations\201411042313247_MaxLengthOnNames.Designer.cs">
+      <DependentUpon>201411042313247_MaxLengthOnNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411042319422_ColumnFirstName.cs" />
+    <Compile Include="Migrations\201411042319422_ColumnFirstName.Designer.cs">
+      <DependentUpon>201411042319422_ColumnFirstName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411050013446_ComplexDataModel.cs" />
+    <Compile Include="Migrations\201411050013446_ComplexDataModel.Designer.cs">
+      <DependentUpon>201411050013446_ComplexDataModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Enrollment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Instructor.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OfficeAssignment.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -193,6 +218,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\CUTest.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -260,6 +286,20 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201410292221001_InitialCreate.resx">
+      <DependentUpon>201410292221001_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411042313247_MaxLengthOnNames.resx">
+      <DependentUpon>201411042313247_MaxLengthOnNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411042319422_ColumnFirstName.resx">
+      <DependentUpon>201411042319422_ColumnFirstName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411050013446_ComplexDataModel.resx">
+      <DependentUpon>201411050013446_ComplexDataModel.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
