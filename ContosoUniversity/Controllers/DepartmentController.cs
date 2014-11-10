@@ -31,7 +31,12 @@ namespace ContosoUniversity.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Department department = await db.Departments.FindAsync(id);
+            // Commenting out original code to show how to use a raw SQL query.
+            //Department department = await db.Departments.FindAsync(id);
+            // Create and execute raw SQL query.
+            string query = "SELECT * FROM Department WHERE DepartmentID = @p0";
+            Department department = await db.Departments.SqlQuery(query, id).SingleOrDefaultAsync();
+
             if (department == null)
             {
                 return HttpNotFound();
@@ -91,6 +96,11 @@ namespace ContosoUniversity.Controllers
         {
             try
             {
+                if (ModelState.IsValid)
+                {
+                    ValidateOneAdministratorAssignmentPerInstructor(department);
+                }
+
                 if (ModelState.IsValid)
                 {
                     db.Entry(department).State = EntityState.Modified;
@@ -200,6 +210,26 @@ namespace ContosoUniversity.Controllers
                 //Log the error (uncomment dex variable name after DataException and add a line here to write a log.
                 ModelState.AddModelError(string.Empty, "Unable to delete. Try again, and if the problem persists contact your system administrator.");
                 return View(department);
+            }
+        }
+        private void ValidateOneAdministratorAssignmentPerInstructor(Department department)
+        {
+            if (department.InstructorID != null)
+            {
+                Department duplicateDepartment = db.Departments
+                    .Include("Administrator")
+                    .Where(d => d.InstructorID == department.InstructorID)
+                    .AsNoTracking()
+                    .FirstOrDefault();
+                if (duplicateDepartment != null && duplicateDepartment.DepartmentID != department.DepartmentID)
+                {
+                    string errorMessage = String.Format(
+                        "Instructor {0} {1} is already administrator of the {2} department.",
+                        duplicateDepartment.Administrator.FirstMidName,
+                        duplicateDepartment.Administrator.LastName,
+                        duplicateDepartment.Name);
+                    ModelState.AddModelError(string.Empty, errorMessage);
+                }
             }
         }
         protected override void Dispose(bool disposing)
