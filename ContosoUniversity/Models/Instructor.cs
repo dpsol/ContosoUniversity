@@ -5,26 +5,26 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContosoUniversity.Models
 {
-    public class Instructor
+    public class Instructor : Person
     {
-        public int ID { get; set; }
-
-        [Display(Name = "Last Name"), StringLength(50, MinimumLength = 1)]
-        public string LastName { get; set; }
-
-        [Column("FirstName"), Display(Name = "First Name"), StringLength(50, MinimumLength = 1)]
-        public string FirstMidName { get; set; }
-
-        [DataType(DataType.Date), Display(Name = "Hire Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Hire Date")]
         public DateTime HireDate { get; set; }
 
-        [Display(Name = "Full Name")]
-        public string FullName
+        private ICollection<Course> _courses;
+        public virtual ICollection<Course> Courses
         {
-            get { return LastName + ", " + FirstMidName; }
+            get
+            {
+                return _courses ?? (_courses = new List<Course>());
+            }
+            set
+            {
+                _courses = value;
+            }
         }
-
-        public virtual ICollection<Course> Courses { get; set; }
         public virtual OfficeAssignment OfficeAssignment { get; set; }
     }
 }
+
